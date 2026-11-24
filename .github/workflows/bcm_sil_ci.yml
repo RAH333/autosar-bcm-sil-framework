@@ -1,0 +1,30 @@
+name: BCM AUTOSAR SIL Verification Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  sil-verification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Configure CMake Build
+        run: cmake -B build -S .
+
+      - name: Compile MISRA-Compliant Embedded C Target
+        run: cmake --build build
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Automated Python SIL Test Framework
+        run: python3 sil_framework/run_sil_suite.py
+        
