@@ -1,0 +1,47 @@
+[
+  {
+    "id": "TC_BCM_01",
+    "description": "Window Idle State",
+    "switch_cmd": 0,
+    "motor_current_ma": 0,
+    "expected_motor_state": 0,
+    "expected_pinch_faults": 0,
+    "expected_uds_sid": "0x62"
+  },
+  {
+    "id": "TC_BCM_02",
+    "description": "Normal Power Window Up",
+    "switch_cmd": 1,
+    "motor_current_ma": 6500,
+    "expected_motor_state": 1,
+    "expected_pinch_faults": 0,
+    "expected_uds_sid": "0x62"
+  },
+  {
+    "id": "TC_BCM_03",
+    "description": "Normal Power Window Down",
+    "switch_cmd": 2,
+    "motor_current_ma": 5200,
+    "expected_motor_state": 2,
+    "expected_pinch_faults": 0,
+    "expected_uds_sid": "0x62"
+  },
+  {
+    "id": "TC_BCM_04",
+    "description": "Anti-Pinch Safety Triggered on Obstruction",
+    "switch_cmd": 1,
+    "motor_current_ma": 14500,
+    "expected_motor_state": 3,
+    "expected_pinch_faults": 1,
+    "expected_uds_sid": "0x62"
+  },
+  {
+    "id": "TC_BCM_05",
+    "description": "Boundary Current Threshold (12000 mA - Safe)",
+    "switch_cmd": 1,
+    "motor_current_ma": 12000,
+    "expected_motor_state": 1,
+    "expected_pinch_faults": 0,
+    "expected_uds_sid": "0x62"
+  }
+]
